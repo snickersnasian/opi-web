@@ -1,0 +1,19 @@
+@import '../../assets/global.scss';
+
+.navBar nav {
+	max-width: $desktopWidth;
+    width: 100%;
+
+    padding: 1rem;
+}
+
+.navBar {
+	box-shadow: 0px 0.25rem 1.3rem 0 rgba(0, 0, 0, 0.1);
+	height: 4rem;
+
+	display: flex;
+	align-items: center;
+    justify-content: center;
+
+    margin: var(--navbarMargin, 0 0 2rem);
+}
