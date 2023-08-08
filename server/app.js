@@ -1,8 +1,8 @@
 import express from "express";
 import { config } from "dotenv";
 
-import { scheduleRoutes } from "./routes/schedule.routes.js";
-import { authRoutes } from "./routes/auth.routes.js";
+import { scheduleRoutes } from "./routes/schedule/schedule.routes.js";
+import { authRoutes } from "./routes/auth/auth.routes.js";
 import bodyParser from "body-parser";
 
 config();
