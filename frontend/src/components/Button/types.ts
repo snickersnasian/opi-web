@@ -1,4 +1,4 @@
 export interface ButtonProps {
-	onClick: () => void;
+	onClick?: () => void;
 	text: string;
 }

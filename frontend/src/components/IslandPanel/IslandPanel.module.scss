@@ -1,0 +1,7 @@
+@import '../../assets/global.scss';
+
+.panel {
+	background-color: $piWhite;
+	padding: var(--islandPanelPadding, 1rem);
+	border-radius: 1rem;
+}

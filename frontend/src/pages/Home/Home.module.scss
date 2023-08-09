@@ -1,0 +1,19 @@
+@import '../../assets/global.scss';
+
+.content {
+	width: $desktopWidth;
+}
+
+.container {
+	background-color: $piSecondary;
+	display: flex;
+	justify-content: center;
+	padding: 2rem 1rem 0;
+
+	height: 100vh;
+}
+
+.islandsContainer {
+	display: grid;
+	gap: 2rem;
+}
