@@ -5,7 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "nodemon app.js"
+		"dev": "nodemon app.js",
+		"docker:build": "docker build -t opi-server .",
+		"docker:save": "docker save -o ./opi-server.tar opi-server"
 	},
 	"keywords": [],
 	"author": "",
