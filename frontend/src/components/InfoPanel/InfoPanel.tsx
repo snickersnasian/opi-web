@@ -4,7 +4,11 @@ import { InfoPanelProps } from './types';
 import { Typo } from 'src/lib/Typo/Typo';
 import { IslandPanel } from '../IslandPanel/IslandPanel';
 
-export const InfoPanel = ({ title, text, children }: PropsWithChildren<InfoPanelProps>): ReactElement => {
+export const InfoPanel = ({
+	title,
+	text,
+	children,
+}: PropsWithChildren<InfoPanelProps>): ReactElement => {
 	return (
 		<IslandPanel>
 			<div className={styles.panel}>

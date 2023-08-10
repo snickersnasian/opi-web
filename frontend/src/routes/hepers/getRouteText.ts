@@ -1,5 +1,5 @@
-import { AppRoutes, RoutesDescription } from "../constants"
+import { AppRoutes, RoutesDescription } from '../constants';
 
 export const getRouteText = (route: AppRoutes): string => {
-    return RoutesDescription[route]
-}
+	return RoutesDescription[route];
+};

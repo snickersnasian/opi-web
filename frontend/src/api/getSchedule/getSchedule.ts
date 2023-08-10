@@ -8,7 +8,7 @@ export const getSchedule = async (): Promise<
 	const jsonBody = await result.json();
 	const { lastScheduleFiles } = jsonBody;
 
-	const schedules = mapSchedule(lastScheduleFiles)
+	const schedules = mapSchedule(lastScheduleFiles);
 
 	return schedules;
 };

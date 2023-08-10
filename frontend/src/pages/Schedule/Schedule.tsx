@@ -5,11 +5,13 @@ import { FileSummary } from 'src/components/FileSummary/FileSummary';
 import { getSchedule } from 'src/api/getSchedule/getSchedule';
 import { ScheduleFile } from './types';
 import { Modal } from 'src/components/Modal/Modal';
+import { ScheduleFileSummary } from 'src/components/ScheduleFileSummary/ScheduleFileSummary';
 
 export const Schedule = (): ReactElement => {
 	const [schedules, setSchedules] = useState<Record<string, ScheduleFile[]>>(
 		{}
 	);
+
 	const studyYears = Object.keys(schedules);
 
 	useEffect(() => {
@@ -23,7 +25,6 @@ export const Schedule = (): ReactElement => {
 
 	return (
 		<div className={styles.container}>
-			<Modal onOutsideClick={() => console.log('onOutsideClick')} />
 			<div className={styles.content}>
 				<div className={styles.islandsGroup}>
 					{studyYears.map((studyYear, index) => {
@@ -31,10 +32,10 @@ export const Schedule = (): ReactElement => {
 							<InfoPanel key={index} title={`${studyYear} курс`}>
 								{schedules[studyYear].map((schedule, index) => {
 									return (
-										<FileSummary
+										<ScheduleFileSummary
 											key={index}
-											url={`/file/${schedule.id}`}
 											title={schedule.title || schedule.name}
+											scheduleId={String(schedule.id)}
 										/>
 									);
 								})}

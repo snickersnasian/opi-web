@@ -1,4 +1,4 @@
 export type InfoPanelProps = {
-    title?: string,
-    text?: string,
-}
+	title?: string;
+	text?: string;
+};

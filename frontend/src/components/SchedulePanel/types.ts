@@ -1,4 +1,4 @@
 export type FileSummaryProps = {
-    title?: string,
-    url: string,
-}
+	title?: string;
+	url: string;
+};
