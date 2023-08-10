@@ -1,0 +1,39 @@
+@import '../../assets/global.scss';
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    --islandPanelBgColor: #F6F7FA;
+
+	transition: all 0.1s ease-in-out;
+
+}
+
+.wrapper:hover {
+	transform: scale(1.03);
+
+	transition: all 0.1s ease-in-out;
+}
+
+
+.icon {
+	min-width: 3rem;
+}
+
+
+.panel {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 2rem;
+}
+
+.title {
+	font-size: 1.25rem;
+	font-weight: 400;
+	text-decoration-line: underline;
+
+	color: $piBlack;
+}
+

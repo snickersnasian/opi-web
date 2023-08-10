@@ -1,7 +1,10 @@
 @import './colors.scss';
 @import './reset.scss';
 @import './viewSizes.scss';
+@import './typo.scss';
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 
 * {
-	font-family: 'Gilroy';
+	font-family: Montserrat;
 }

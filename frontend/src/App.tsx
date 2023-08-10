@@ -1,18 +1,27 @@
 import React, { ReactElement } from 'react';
 import { Navbar } from './components/Navbar/Navbar';
-import { IslandPanel } from './components/IslandPanel/IslandPanel';
 import styles from './App.module.scss';
-import { Button } from './components/Button/Button';
 import { Route, Routes } from 'react-router-dom';
-import { Home } from './pages/Home/Home';
+import { AppRoutes } from './routes/constants';
+import { getRouteUrl } from './routes/hepers/getRouteUrl';
+import { getRoutePage } from './routes/hepers/getRoutePage';
 
 function App(): ReactElement {
+	const appRoutes = Object.values(AppRoutes);
 	return (
 		<div className={styles.App}>
-			<Navbar />
+			<Navbar routes={appRoutes} />
 
 			<Routes>
-				<Route path="/" element={<Home />} />
+				{appRoutes.map((route, index) => {
+					return (
+						<Route
+							path={getRouteUrl(route)}
+							element={getRoutePage(route)}
+							key={index}
+						/>
+					);
+				})}
 			</Routes>
 		</div>
 	);

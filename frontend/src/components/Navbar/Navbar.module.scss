@@ -4,7 +4,13 @@
 	max-width: $desktopWidth;
 	width: 100%;
 
+	display: flex;
+
 	padding: 1rem;
+}
+
+.logo {
+	min-width: 140px;
 }
 
 .navBar {
@@ -14,4 +20,44 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.navItems {
+	display: flex;
+	gap: 1rem;
+	margin: -1rem 0;
+}
+
+.navItemsWrapper {
+	display: flex;
+
+	justify-content: space-around;
+
+	flex: 1;
+}
+
+.navItem {
+	display: flex;
+
+	align-items: center;
+	justify-content: center;
+	transition: border-bottom ease-in-out 0.3s;
+}
+
+.navItem a {
+	transition: color 0.1s ease-in-out;
+	color: $piTextSecondary;
+}
+
+.navItem a:hover {
+	transition: color 0.1s ease-in-out;
+	color: $piBlack;
+}
+
+.navItem.navItemActive {
+	border-bottom: $piBlack 0.25rem solid;
+}
+
+.navItem.navItemActive a {
+	color: $piBlack;
 }

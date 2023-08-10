@@ -2,6 +2,9 @@
 
 .content {
 	width: $desktopWidth;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
 }
 
 .container {
@@ -14,6 +17,23 @@
 }
 
 .islandsContainer {
-	display: grid;
+	display: flex;
+    flex-direction: row;
 	gap: 2rem;
+    
+}
+
+.islandsGroup {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+
+    flex: 1 1 0;
+}
+
+.panelChildren  {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    --islandPanelBgColor: #F6F7FA;
 }

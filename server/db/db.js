@@ -16,6 +16,9 @@ export const ScheduleFile = sequelize.define("File", {
 		type: DataTypes.STRING,
 		allowNull: false,
 	},
+	title: {
+		type: DataTypes.STRING,
+	},
 	studyYear: {
 		type: DataTypes.INTEGER,
 		allowNull: false,
@@ -38,5 +41,5 @@ ScheduleFile.hasMany(Image, { onDelete: "CASCADE", hooks: true });
 Image.belongsTo(ScheduleFile, { foreignKey: "FileId" });
 
 (async () => {
-	await sequelize.sync();
+	await sequelize.sync({ alter: true });
 })();

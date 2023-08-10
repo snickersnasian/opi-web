@@ -36,8 +36,10 @@ router.post("/upload", checkAuth, multer().single("schedule"), async (req, res) 
 		}
 
 		const { studyYear } = req.body;
+		const { title } = req.body;
 
-		const file = await createSchedule(scheduleFile.originalname, studyYear);
+
+		const file = await createSchedule(scheduleFile.originalname, studyYear, title);
 
 		const convertedImgName = nanoid();
 
