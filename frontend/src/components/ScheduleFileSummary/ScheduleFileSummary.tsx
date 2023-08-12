@@ -2,7 +2,6 @@ import React, { type ReactElement, useState, useEffect } from 'react';
 import { FileSummaryProps } from './types';
 import { Modal } from '../Modal/Modal';
 import { FileSummary } from '../FileSummary/FileSummary';
-import { Oval } from 'react-loader-spinner';
 import styles from './ScheduleFileSummary.module.scss';
 import { formatDateTime } from './helpers/formatDateTime';
 import { FadeAppear } from '../FadeAppear/FadeAppear';
@@ -10,7 +9,6 @@ import { DocumentCallback } from 'react-pdf/dist/cjs/shared/types';
 import { range } from 'lodash-es';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { Button } from '../Button/Button';
-import { useNavigate } from 'react-router-dom';
 
 export const ScheduleFileSummary = ({
 	title,
@@ -46,7 +44,9 @@ export const ScheduleFileSummary = ({
 					<Modal onOutsideClick={handleCloseModal}>
 						<div className={styles.scheduleControls}>
 							<Button>
-								<a target='__blank' href={fileUrl}>Скачать</a>
+								<a target="__blank" href={fileUrl}>
+									Скачать
+								</a>
 							</Button>
 							<div className={styles.closeBtn}>
 								<Button>
@@ -55,11 +55,16 @@ export const ScheduleFileSummary = ({
 							</div>
 						</div>
 						<FadeAppear>
-							<Document className={styles.scheduleImages} file={fileUrl} onLoadSuccess={onScheduleLoad}>
+							<Document
+								className={styles.scheduleImages}
+								file={fileUrl}
+								onLoadSuccess={onScheduleLoad}
+							>
 								{numPages &&
 									range(numPages).map((pageNum) => {
 										return (
 											<Page
+												className={styles.schedulePage}
 												renderAnnotationLayer={false}
 												renderTextLayer={false}
 												pageIndex={pageNum}

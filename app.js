@@ -1,11 +1,11 @@
-import express from "express";
-import { config } from "dotenv";
+import express from 'express';
+import { config } from 'dotenv';
 
-import { scheduleRoutes } from "./routes/schedule/schedule.routes.js";
-import { authRoutes } from "./routes/auth/auth.routes.js";
-import bodyParser from "body-parser";
-import path from "path";
-import { fileURLToPath } from "url";
+import { scheduleRoutes } from './routes/schedule/schedule.routes.js';
+import { authRoutes } from './routes/auth/auth.routes.js';
+import bodyParser from 'body-parser';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 config();
 
@@ -19,12 +19,12 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/api/schedule", scheduleRoutes);
-app.use("/api/auth", authRoutes);
-app.use(express.static(path.join(__dirname, "frontend", "build")));
+app.use('/api/schedule', scheduleRoutes);
+app.use('/api/auth', authRoutes);
+app.use(express.static(path.join(__dirname, 'frontend', 'build')));
 
-app.get("*", (req, res) => {
-	res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'));
 });
 
 try {

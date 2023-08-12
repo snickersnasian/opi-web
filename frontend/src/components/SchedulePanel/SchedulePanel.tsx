@@ -1,7 +1,6 @@
 import React, { type ReactElement } from 'react';
 import styles from './FileSummary.module.scss';
 import { FileSummaryProps } from './types';
-import { Typo } from 'src/lib/Typo/Typo';
 import { InfoPanel } from '../InfoPanel/InfoPanel';
 import PdfIcon from '../../assets/icons/PdfIcon.svg';
 

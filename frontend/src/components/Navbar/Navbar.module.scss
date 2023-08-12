@@ -6,6 +6,8 @@
 
 	display: flex;
 
+	justify-content: space-between;
+
 	padding: 1rem;
 }
 
@@ -46,7 +48,7 @@
 
 .navItem a {
 	transition: color 0.1s ease-in-out;
-	color: $piTextSecondary;
+	color: var(--piTextSecondary);
 }
 
 .navItem a:hover {
@@ -56,14 +58,50 @@
 
 .navItem.navItemActive {
 	border-bottom: $piBlack 0.25rem solid;
+	animation: borderBottomFade 0.3s ease-in-out;
 }
 
 .navItem.navItemActive a {
 	color: $piBlack;
 }
 
+.menuIcon {
+	display: none;
+}
+
+.menuBurger {
+	display: none;
+}
+
 @media screen and (max-width: $tabletWidth) {
-	.navItems {
+	.menuBurger {
+		display: block;
+		position: absolute;
+		background-color: var(--piWhite);
+
+		top: 4rem;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.navItemsWrapper {
 		display: none;
+	}
+
+	.menuIcon {
+		display: block;
+	}
+
+	.navItem.navItemActive {
+		border-bottom: none;
+	}
+
+	.menuBurgerItems {
+		display: flex;
+		padding: 1rem 2rem;
+		gap: 1rem;
+		flex-direction: column;
+		align-items: start;
 	}
 }

@@ -9,15 +9,12 @@ export const Schedule = (): ReactElement => {
 	const [schedules, setSchedules] = useState<Record<string, ScheduleFile[]>>(
 		{}
 	);
-	const [isLoading, setIsLoading] = useState(false);
 
 	const studyYears = Object.keys(schedules);
 
 	useEffect(() => {
 		async function fetchSchedule() {
-			setIsLoading(true);
 			const res = await getSchedule();
-			setIsLoading(false);
 			setSchedules(res);
 		}
 

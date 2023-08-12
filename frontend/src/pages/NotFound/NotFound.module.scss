@@ -1,0 +1,46 @@
+@import '../../assets/global.scss';
+
+.container {
+	background-color: $piSecondary;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2rem 1rem;
+
+	height: 100%;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+
+	a {
+		color: var(--piPrimary);
+	}
+}
+
+.islandsGroup {
+	display: grid;
+	gap: 2rem;
+	grid-template-columns: 1fr 1fr;
+}
+
+.description {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	align-items: center;
+
+	div {
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: $tabletWidth) {
+	.islandsGroup {
+		grid-template-columns: 1fr;
+	}
+}

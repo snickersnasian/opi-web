@@ -9,7 +9,9 @@
 		"client": "npm start --prefix ./frontend",
 		"dev": "concurrently \"npm run server\" \"npm run client\"",
 		"docker:build": "docker build -t opi-server .",
-		"docker:save": "docker save -o ./opi-server.tar opi-server"
+		"docker:save": "docker save -o ./opi-server.tar opi-server",
+		"prettier:fix": "prettier -w .",
+		"lint": "npx eslint ."
 	},
 	"keywords": [],
 	"author": "",
@@ -30,7 +32,13 @@
 		"eslint-plugin-import": "^2.28.0",
 		"eslint-plugin-n": "^16.0.1",
 		"eslint-plugin-promise": "^6.1.1",
-		"nodemon": "^3.0.1"
+		"husky": "^8.0.3",
+		"nodemon": "^3.0.1",
+		"pre-commit": "^1.2.2"
 	},
+	"pre-commit": [
+		"prettier:fix",
+		"lint"
+	],
 	"type": "module"
 }

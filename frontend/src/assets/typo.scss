@@ -20,3 +20,11 @@
 	font-weight: 700;
 	line-height: normal;
 }
+
+:global(.title-L-bold) {
+	color: $piBlack;
+	font-size: 3rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+}
