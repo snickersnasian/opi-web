@@ -5,7 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "nodemon app.js",
+		"server": "nodemon app.js",
+		"client": "npm start --prefix ./frontend",
+		"dev": "concurrently \"npm run server\" \"npm run client\"",
 		"docker:build": "docker build -t opi-server .",
 		"docker:save": "docker save -o ./opi-server.tar opi-server"
 	},

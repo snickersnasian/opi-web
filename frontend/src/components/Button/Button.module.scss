@@ -3,7 +3,7 @@
 .piBtn {
 	display: inline-block;
 	border-radius: 1rem;
-	background-color: $piPrimary;
+	background-color: var(--piBtnBgColor, $piPrimary);
 	color: $piWhite;
 	padding: 1rem;
 	font-size: 1.3rem;

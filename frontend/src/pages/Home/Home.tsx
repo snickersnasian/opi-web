@@ -25,21 +25,29 @@ export const Home = (): ReactElement => {
 										Гусейнова Лейла Арзуевна
 									</div>
 								</InfoPanel>
+
+								<InfoPanel>
+									<div className={Typo.TITLE_S_BOLD}>
+										Гусейнова Лейла Арзуевна
+									</div>
+								</InfoPanel>
+
+								<InfoPanel>
+									<div className={Typo.TITLE_S_BOLD}>
+										Гусейнова Лейла Арзуевна
+									</div>
+								</InfoPanel>
 							</div>
 						</InfoPanel>
 					</div>
 					<div className={styles.islandsGroup}>
 						<IslandPanel>
-							<Button
-								text="Кнопка"
-								onClick={() => alert('Нажатие на кнопку')}
-							/>
+							<Button onClick={() => alert('Нажатие на кнопку')}>Кнопка</Button>
 						</IslandPanel>
 						<IslandPanel>
-							<Button
-								text="Другая кнопка"
-								onClick={() => alert('Нажатие на другую кнопку')}
-							/>
+							<Button onClick={() => alert('Нажатие на другую кнопку')}>
+								Другая кнопка
+							</Button>
 						</IslandPanel>
 					</div>
 				</div>

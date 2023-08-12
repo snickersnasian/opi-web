@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import { AppRoutes } from './routes/constants';
 import { getRouteUrl } from './routes/hepers/getRouteUrl';
 import { getRoutePage } from './routes/hepers/getRoutePage';
+import { FadeAppear } from './components/FadeAppear/FadeAppear';
 
 function App(): ReactElement {
 	const appRoutes = Object.values(AppRoutes);
@@ -12,17 +13,19 @@ function App(): ReactElement {
 		<div className={styles.App}>
 			<Navbar routes={appRoutes} />
 
-			<Routes>
-				{appRoutes.map((route, index) => {
-					return (
-						<Route
-							path={getRouteUrl(route)}
-							element={getRoutePage(route)}
-							key={index}
-						/>
-					);
-				})}
-			</Routes>
+			<FadeAppear>
+				<Routes>
+					{appRoutes.map((route, index) => {
+						return (
+							<Route
+								path={getRouteUrl(route)}
+								element={getRoutePage(route)}
+								key={index}
+							/>
+						);
+					})}
+				</Routes>
+			</FadeAppear>
 		</div>
 	);
 }

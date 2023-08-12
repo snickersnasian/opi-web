@@ -3,10 +3,10 @@
 .panel {
 	position: absolute;
 	display: inline-block;
-	width: 1190px;
+	max-width: 1190px;
 	margin: 10rem 2rem;
 
-	background-color: var(--islandPanelBgColor, $piWhite);
+	background-color: var(--islandPanelBgColor, $piSecondary);
 	padding: var(--islandPanelPadding, 2rem);
 	border-radius: 1rem;
 }
@@ -23,7 +23,7 @@
 	background-color: $piBlackTransparent;
 }
 
-@media screen and (max-width: $phoneWidth) {
+@media screen and (max-width: $tabletWidth) {
 	.panel {
 		top: 0;
 		width: 100%;

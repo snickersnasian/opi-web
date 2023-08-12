@@ -1,22 +1,23 @@
 import React, { useEffect, type ReactElement, useState } from 'react';
 import styles from './Schedule.module.scss';
 import { InfoPanel } from 'src/components/InfoPanel/InfoPanel';
-import { FileSummary } from 'src/components/FileSummary/FileSummary';
 import { getSchedule } from 'src/api/getSchedule/getSchedule';
 import { ScheduleFile } from './types';
-import { Modal } from 'src/components/Modal/Modal';
 import { ScheduleFileSummary } from 'src/components/ScheduleFileSummary/ScheduleFileSummary';
 
 export const Schedule = (): ReactElement => {
 	const [schedules, setSchedules] = useState<Record<string, ScheduleFile[]>>(
 		{}
 	);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const studyYears = Object.keys(schedules);
 
 	useEffect(() => {
 		async function fetchSchedule() {
+			setIsLoading(true);
 			const res = await getSchedule();
+			setIsLoading(false);
 			setSchedules(res);
 		}
 
@@ -34,6 +35,7 @@ export const Schedule = (): ReactElement => {
 									return (
 										<ScheduleFileSummary
 											key={index}
+											uploadedAt={schedule.createdAt}
 											title={schedule.title || schedule.name}
 											scheduleId={String(schedule.id)}
 										/>

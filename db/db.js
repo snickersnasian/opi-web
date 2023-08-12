@@ -29,17 +29,18 @@ export const ScheduleFile = sequelize.define("File", {
 	},
 });
 
-export const Image = sequelize.define("Image", {
-	fileName: {
-		type: DataTypes.STRING,
-		allowNull: false,
-		unique: true,
-	},
-});
+// export const Image = sequelize.define("Image", {
+// 	fileName: {
+// 		type: DataTypes.STRING,
+// 		allowNull: false,
+// 		unique: true,
+// 	},
+// });
 
-ScheduleFile.hasMany(Image, { onDelete: "CASCADE", hooks: true });
-Image.belongsTo(ScheduleFile, { foreignKey: "FileId" });
+// ScheduleFile.hasMany(Image, { onDelete: "CASCADE", hooks: true });
+// Image.belongsTo(ScheduleFile, { foreignKey: "FileId" });
 
 (async () => {
-	await sequelize.sync({ alter: true });
+	await sequelize.sync();
+	// await sequelize.sync({ alter: true });
 })();

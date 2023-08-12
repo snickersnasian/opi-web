@@ -1,4 +1,3 @@
-import { Sequelize } from "sequelize";
 import { ScheduleFile } from "../db.js";
 
 export const createSchedule = async (fileName, studyYear, title) => {

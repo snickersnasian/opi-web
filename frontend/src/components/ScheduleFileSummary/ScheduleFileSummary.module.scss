@@ -1,1 +1,21 @@
 @import '../../assets/global.scss';
+
+.closeBtn {
+	--piBtnBgColor: var(--piNegative);
+}
+
+.scheduleControls {
+	display: flex;
+	gap: 1rem;
+
+	margin-bottom: 1rem;
+
+	justify-content: flex-end;
+}
+
+.scheduleImages {
+	display: flex;
+	gap: 1rem;
+
+	flex-direction: column;
+}

@@ -11,9 +11,7 @@
 	background-color: $piSecondary;
 	display: flex;
 	justify-content: center;
-	padding: 2rem 1rem 0;
-
-	height: 100vh;
+	padding: 2rem 1rem 2rem;
 }
 
 .islandsContainer {
@@ -35,4 +33,10 @@
 	flex-direction: column;
 	gap: 1.25rem;
 	--islandPanelBgColor: #f6f7fa;
+}
+
+@media screen and (max-width: $tabletWidth) {
+	.islandsContainer {
+		flex-direction: column;
+	}
 }
