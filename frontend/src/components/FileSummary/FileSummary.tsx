@@ -1,4 +1,4 @@
-import React, { type ReactElement, useState } from 'react';
+import React, { type ReactElement } from 'react';
 import styles from './FileSummary.module.scss';
 import { FileSummaryProps } from './types';
 import { InfoPanel } from '../InfoPanel/InfoPanel';

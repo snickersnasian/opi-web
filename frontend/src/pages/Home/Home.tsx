@@ -6,6 +6,8 @@ import { ImageBanner } from 'src/components/ImageBanner/ImageBanner';
 import HomePageBanner from '../../assets/images/HomaPageBanner.svg';
 import { InfoPanel } from 'src/components/InfoPanel/InfoPanel';
 import { Typo } from 'src/lib/Typo/Typo';
+import { ContactsPanel } from 'src/components/ContactsPanel/ContactsPanel';
+import { contacts } from 'src/info/contacts/contacts';
 
 export const Home = (): ReactElement => {
 	return (
@@ -18,27 +20,7 @@ export const Home = (): ReactElement => {
 							title="Отделение Прикладной Информатики"
 							text="Отделение прикладной информатики ведет подготовку востребованных на рынке труда кадров и занимает устойчивую нишу в области подготовки специалистов для ИТ-сферы. Выпускники отделения — это специалисты по информационным системам и информационным ресурсам, системные аналитики, разработчики бизнес-приложений. Они способны работать как в ИТ компаниях, разрабатывающих программные комплексы, так и в организациях, внедряющих и эксплуатирующих информационно-коммуникационные технологии."
 						/>
-						<InfoPanel title="Контакты">
-							<div className={styles.panelChildren}>
-								<InfoPanel>
-									<div className={Typo.TITLE_S_BOLD}>
-										Гусейнова Лейла Арзуевна
-									</div>
-								</InfoPanel>
-
-								<InfoPanel>
-									<div className={Typo.TITLE_S_BOLD}>
-										Гусейнова Лейла Арзуевна
-									</div>
-								</InfoPanel>
-
-								<InfoPanel>
-									<div className={Typo.TITLE_S_BOLD}>
-										Гусейнова Лейла Арзуевна
-									</div>
-								</InfoPanel>
-							</div>
-						</InfoPanel>
+						<ContactsPanel  contacts={contacts}/>
 					</div>
 					<div className={styles.islandsGroup}>
 						<IslandPanel>

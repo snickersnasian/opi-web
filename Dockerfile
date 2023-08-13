@@ -1,18 +1,15 @@
-# Используем базовый образ с поддержкой Linux
-FROM node:14
+FROM node:12-alpine as build
 
-# Установка утилиты pdftoppm
-RUN apt-get update && apt-get install -y poppler-utils
+WORKDIR /app
 
-# Устанавливаем рабочую директорию
-WORKDIR /usr/src/app
+COPY ./package*.json ./
 
-# Копирование зависимостей и package.json
-COPY package*.json ./
-RUN npm install
+RUN npm install --production
 
-# Копируем необходимые файлы из вашего проекта
 COPY . .
 
-# Указываем команду для запуска вашего приложения
+RUN npm install --production --prefix ./frontend
+RUN npm run build --prefix ./frontend
+
+
 CMD ["node", "app.js"]

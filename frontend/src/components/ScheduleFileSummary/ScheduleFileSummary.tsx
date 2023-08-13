@@ -9,6 +9,7 @@ import { DocumentCallback } from 'react-pdf/dist/cjs/shared/types';
 import { range } from 'lodash-es';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { Button } from '../Button/Button';
+import { Typo } from 'src/lib/Typo/Typo';
 
 export const ScheduleFileSummary = ({
 	title,
@@ -54,6 +55,7 @@ export const ScheduleFileSummary = ({
 								</Button>
 							</div>
 						</div>
+						<div className={styles.scheduleTitle}>{title}</div>
 						<FadeAppear>
 							<Document
 								className={styles.scheduleImages}

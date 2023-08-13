@@ -35,6 +35,23 @@
 	--islandPanelBgColor: #f6f7fa;
 }
 
+.contactsInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.contactsData {
+	display: flex;
+	flex-wrap: wrap;
+
+	color: var(--piPrimary);
+
+	div {
+		margin: 0 0.5rem 0.5rem 0;
+	}
+}
+
 @media screen and (max-width: $tabletWidth) {
 	.islandsContainer {
 		flex-direction: column;
