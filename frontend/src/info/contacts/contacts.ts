@@ -16,7 +16,7 @@ export const contacts: Contact[] = [
 ];
 
 export type Contact = {
-		name: string,
-		phone?: string[],
-		email?: string[],
-}
+	name: string;
+	phone?: string[];
+	email?: string[];
+};
