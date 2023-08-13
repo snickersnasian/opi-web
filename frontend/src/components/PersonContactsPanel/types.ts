@@ -1,3 +1,3 @@
-import { Contact } from 'src/info/contacts/contacts';
+import { ContactPerson } from 'src/info/contactPerson/contactPerson';
 
-export type ContactsPanelProps = { contacts: Contact[] };
+export type PersonContactsPanelProps = { person: ContactPerson };

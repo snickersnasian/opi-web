@@ -7,6 +7,8 @@ import HomePageBanner from '../../assets/images/HomaPageBanner.svg';
 import { InfoPanel } from 'src/components/InfoPanel/InfoPanel';
 import { ContactsPanel } from 'src/components/ContactsPanel/ContactsPanel';
 import { contacts } from 'src/info/contacts/contacts';
+import { PersonContactsPanel } from 'src/components/PersonContactsPanel/PersonContactsPanel';
+import { contactPerson } from 'src/info/contactPerson/contactPerson';
 
 export const Home = (): ReactElement => {
 	return (
@@ -19,6 +21,7 @@ export const Home = (): ReactElement => {
 							title="Отделение Прикладной Информатики"
 							text="Отделение прикладной информатики ведет подготовку востребованных на рынке труда кадров и занимает устойчивую нишу в области подготовки специалистов для ИТ-сферы. Выпускники отделения — это специалисты по информационным системам и информационным ресурсам, системные аналитики, разработчики бизнес-приложений. Они способны работать как в ИТ компаниях, разрабатывающих программные комплексы, так и в организациях, внедряющих и эксплуатирующих информационно-коммуникационные технологии."
 						/>
+						<PersonContactsPanel person={contactPerson} />
 						<ContactsPanel contacts={contacts} />
 					</div>
 					<div className={styles.islandsGroup}>

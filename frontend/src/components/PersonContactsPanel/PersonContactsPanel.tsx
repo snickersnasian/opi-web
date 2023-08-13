@@ -1,36 +1,38 @@
 import React from 'react';
 import { InfoPanel } from '../InfoPanel/InfoPanel';
-import { ContactsPanelProps } from './types';
+import { PersonContactsPanelProps } from './types';
 import styles from './PersonContactsPanel.module.scss';
+import Mail from '../../assets/icons/Mail.svg';
+import Phone from '../../assets/icons/Phone.svg';
 import { Typo } from 'src/lib/Typo/Typo';
 
-export const PersonContactsPanel = ({ contacts }: ContactsPanelProps) => {
+export const PersonContactsPanel = ({ person }: PersonContactsPanelProps) => {
+	const { image, name, role, mail, phone } = person;
 	return (
 		<InfoPanel>
 			<div className={styles.panelChildren}>
-				{contacts.map(({ name, phone, email }, index) => (
-					<InfoPanel key={index}>
-						<div className={styles.contactsInfo}>
-							<div className={Typo.TITLE_S_BOLD}>{name}</div>
-							<div className={styles.contactsData}>
-								{phone &&
-									phone.map((item, index) => (
-										<div key={index} className={Typo.TEXT_M_BOLD}>
-											{item}
-										</div>
-									))}
+				<div className={styles.avatar}>
+					<img src={image} alt="" />
+				</div>
+
+				<div className={styles.info}>
+					<div className={`${Typo.TITLE_M_BOLD} ${styles.title}`}>{name}</div>
+					<div className={`${Typo.TEXT_M} ${styles.role}`}>{role}</div>
+					<div className={styles.contacts}>
+						{mail && (
+							<div className={styles.phone}>
+								<img src={Mail} alt="" />
+								<div>{mail}</div>
 							</div>
-							<div className={styles.contactsData}>
-								{email &&
-									email.map((item, index) => (
-										<div key={index} className={Typo.TEXT_M_BOLD}>
-											{item}
-										</div>
-									))}
+						)}
+						{phone && (
+							<div className={styles.phone}>
+								<img src={Phone} alt="" />
+								<div>{phone}</div>
 							</div>
-						</div>
-					</InfoPanel>
-				))}
+						)}
+					</div>
+				</div>
 			</div>
 		</InfoPanel>
 	);

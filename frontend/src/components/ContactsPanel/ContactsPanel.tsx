@@ -11,7 +11,9 @@ export const ContactsPanel = ({ contacts }: ContactsPanelProps) => {
 				{contacts.map(({ name, phone, email }, index) => (
 					<InfoPanel key={index}>
 						<div className={styles.contactsInfo}>
-							<div className={Typo.TITLE_S_BOLD}>{name}</div>
+							<div className={`${Typo.TITLE_S_BOLD} ${styles.name}`}>
+								{name}
+							</div>
 							<div className={styles.contactsData}>
 								{phone &&
 									phone.map((item, index) => (
