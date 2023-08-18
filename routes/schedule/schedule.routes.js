@@ -10,8 +10,7 @@ import { createSchedule } from '../../db/queries/createSchedule.js';
 import { PDF_PATH, PNG_PATH } from './constants.js';
 import { checkAuth } from '../../middlewares/auth/checkAuth.js';
 import { getScheduleRecord } from '../../db/queries/getScheduleRecord.js';
-import fs from 'fs';
-import { promisify } from 'util';
+import fs from 'fs/promises';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -34,7 +33,7 @@ router.post('/upload', checkAuth, multer().single('schedule'), async (req, res) 
 		const { title } = req.body;
 
 		const pdfPath = path.join(__dirname, PDF_PATH, scheduleFile.originalname);
-		await promisify(fs.writeFile)(pdfPath, scheduleFile.buffer);
+		await fs.writeFile(pdfPath, scheduleFile.buffer);
 
 		await createSchedule(scheduleFile.originalname, studyYear, title);
 
