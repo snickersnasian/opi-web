@@ -10,7 +10,8 @@ import { createSchedule } from '../../db/queries/createSchedule.js';
 import { PDF_PATH, PNG_PATH } from './constants.js';
 import { checkAuth } from '../../middlewares/auth/checkAuth.js';
 import { getScheduleRecord } from '../../db/queries/getScheduleRecord.js';
-import fs from 'fs/promises';
+import fs from 'fs';
+import { promisify } from 'util';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,7 +34,7 @@ router.post('/upload', checkAuth, multer().single('schedule'), async (req, res) 
 		const { title } = req.body;
 
 		const pdfPath = path.join(__dirname, PDF_PATH, scheduleFile.originalname);
-		await fs.writeFile(pdfPath, scheduleFile.buffer);
+		await promisify(fs.writeFile)(pdfPath, scheduleFile.buffer);
 
 		await createSchedule(scheduleFile.originalname, studyYear, title);
 
@@ -45,6 +46,30 @@ router.post('/upload', checkAuth, multer().single('schedule'), async (req, res) 
 });
 
 // /api/schedule/delete/:fileId
+router.get('/delete/:scheduleId', checkAuth, async (req, res) => {
+	try {
+		const scheduleId = req.params.scheduleId;
+
+		const file = await getScheduleRecord(scheduleId);
+
+		if (!file) {
+			return res.status(404).json({ error: 'Файл не найден' });
+		}
+
+		const filename = file.get('name') || '';
+
+		const pdfPath = path.join(__dirname, PDF_PATH, String(filename));
+
+		fs.unlinkSync(pdfPath);
+
+		await file.destroy();
+
+		res.json({ message: 'Запись удалена успешно' });
+	} catch (err) {
+		console.log(err);
+		res.status(500).json({ error: 'Ошибка при удалении записи' });
+	}
+});
 
 // /api/schedule
 router.get('/', async (req, res) => {
