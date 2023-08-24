@@ -12,9 +12,12 @@ import { checkAuth } from '../../middlewares/auth/checkAuth.js';
 import { getScheduleRecord } from '../../db/queries/getScheduleRecord.js';
 import fs from 'fs';
 import { promisify } from 'util';
+import { nanoid } from 'nanoid';
+import { getScheduleRecordByGroupCode } from '../../db/queries/getScheduleRecordByStudyGroup.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const PDF_FILE_EXTENSION = 'pdf';
 
 const router = Router();
 
@@ -30,13 +33,14 @@ router.post('/upload', checkAuth, multer().single('schedule'), async (req, res) 
 			return res.status(400).json({ error: FileUploadStatus.NOT_PDF });
 		}
 
-		const { studyYear } = req.body;
-		const { title } = req.body;
+		const { studyYear, groupCode, title } = req.body;
 
-		const pdfPath = path.join(__dirname, PDF_PATH, scheduleFile.originalname);
+		const fileName = `${nanoid()}.${PDF_FILE_EXTENSION}`;
+
+		const pdfPath = path.join(__dirname, PDF_PATH, fileName);
 		await promisify(fs.writeFile)(pdfPath, scheduleFile.buffer);
 
-		await createSchedule(scheduleFile.originalname, studyYear, title);
+		await createSchedule(fileName, studyYear, title, groupCode.toLowerCase());
 
 		return res.json({ message: FileUploadStatus.SUCCESS });
 	} catch (err) {
@@ -74,6 +78,13 @@ router.get('/delete/:scheduleId', checkAuth, async (req, res) => {
 // /api/schedule
 router.get('/', async (req, res) => {
 	try {
+		const { groupCode } = req.query;
+
+		if (groupCode) {
+			const groupSchedule = await getScheduleRecordByGroupCode(groupCode);
+			return res.json(groupSchedule);
+		}
+
 		const lastScheduleFiles = await getScheduleFiles();
 
 		res.json({ lastScheduleFiles });

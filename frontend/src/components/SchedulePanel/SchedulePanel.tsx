@@ -3,6 +3,7 @@ import styles from './FileSummary.module.scss';
 import { FileSummaryProps } from './types';
 import { InfoPanel } from '../InfoPanel/InfoPanel';
 import PdfIcon from '../../assets/icons/PdfIcon.svg';
+import { Typo } from 'src/lib/Typo/Typo';
 
 export const FileSummary = ({ title, url }: FileSummaryProps): ReactElement => {
 	return (
@@ -13,7 +14,7 @@ export const FileSummary = ({ title, url }: FileSummaryProps): ReactElement => {
 						<div className={styles.icon}>
 							<img src={PdfIcon} />
 						</div>
-						<div className={styles.title}>{title}</div>
+						<div className={`${styles.title} ${Typo.TEXT_M}`}>{title}</div>
 					</div>
 				</InfoPanel>
 			</div>

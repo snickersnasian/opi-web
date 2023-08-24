@@ -35,3 +35,14 @@
 
 	color: $piBlack;
 }
+
+@media screen and (max-width: $phoneWidth) {
+	.title {
+		font-size: 0.8rem;
+	}
+
+	.icon {
+		min-width: 0;
+		max-width: 1.75rem;
+	}
+}

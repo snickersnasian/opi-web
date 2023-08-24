@@ -11,6 +11,7 @@
 		"docker:build": "docker build -t opi-server .",
 		"docker:save": "docker save -o ./opi-server.tar opi-server",
 		"prettier:fix": "prettier -w .",
+		"publish": "docker build -t opi-app . && docker save -o ./opi.tar opi-app && scp opi.tar root@80.78.253.10:/root && docker image rm opi-app && rm opi.tar",
 		"lint": "npx eslint ."
 	},
 	"keywords": [],
