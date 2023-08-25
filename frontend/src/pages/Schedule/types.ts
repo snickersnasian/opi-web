@@ -5,4 +5,5 @@ export type ScheduleFile = {
 	title: string;
 	studyYear: number;
 	updatedAt: string;
+	groupCode: string;
 };

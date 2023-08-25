@@ -3,6 +3,7 @@ import { Sequelize, DataTypes } from 'sequelize';
 export const sequelize = new Sequelize({
 	dialect: 'sqlite',
 	storage: 'db.sqlite',
+	logging: false,
 });
 
 export const ScheduleFile = sequelize.define('File', {
@@ -21,6 +22,7 @@ export const ScheduleFile = sequelize.define('File', {
 	},
 	groupCode: {
 		type: DataTypes.STRING,
+		unique: true,
 	},
 	studyYear: {
 		type: DataTypes.INTEGER,
@@ -33,6 +35,6 @@ export const ScheduleFile = sequelize.define('File', {
 });
 
 (async () => {
-	await sequelize.sync();
+	// await sequelize.sync();
 	await sequelize.sync({ alter: true });
 })();

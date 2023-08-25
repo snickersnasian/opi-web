@@ -9,11 +9,11 @@ import { getScheduleFiles } from '../../db/queries/getScheduleFiles.js';
 import { createSchedule } from '../../db/queries/createSchedule.js';
 import { PDF_PATH, PNG_PATH } from './constants.js';
 import { checkAuth } from '../../middlewares/auth/checkAuth.js';
-import { getScheduleRecord } from '../../db/queries/getScheduleRecord.js';
 import fs from 'fs';
 import { promisify } from 'util';
 import { nanoid } from 'nanoid';
-import { getScheduleRecordByGroupCode } from '../../db/queries/getScheduleRecordByStudyGroup.js';
+import { getScheduleRecordByGroupCode } from '../../db/queries/getScheduleFileByStudyGroup.js';
+import { updateScheduleRecordByGroupCode } from '../../db/queries/updateScheduleRecordByStudyGroup.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -38,7 +38,17 @@ router.post('/upload', checkAuth, multer().single('schedule'), async (req, res) 
 		const fileName = `${nanoid()}.${PDF_FILE_EXTENSION}`;
 
 		const pdfPath = path.join(__dirname, PDF_PATH, fileName);
+
 		await promisify(fs.writeFile)(pdfPath, scheduleFile.buffer);
+
+		const oldFileName = await updateScheduleRecordByGroupCode(groupCode, fileName);
+
+		if (oldFileName) {
+			const oldFile = path.join(__dirname, PDF_PATH, String(oldFileName));
+			fs.unlinkSync(oldFile);
+
+			return res.json({ message: FileUploadStatus.UPDATED });
+		}
 
 		await createSchedule(fileName, studyYear, title, groupCode.toLowerCase());
 
@@ -49,12 +59,12 @@ router.post('/upload', checkAuth, multer().single('schedule'), async (req, res) 
 	}
 });
 
-// /api/schedule/delete/:fileId
-router.get('/delete/:scheduleId', checkAuth, async (req, res) => {
+// /api/schedule/delete/:groupCode
+router.get('/delete/:groupCode', checkAuth, async (req, res) => {
 	try {
-		const scheduleId = req.params.scheduleId;
+		const groupCode = req.params.groupCode;
 
-		const file = await getScheduleRecord(scheduleId);
+		const file = await getScheduleRecordByGroupCode(groupCode);
 
 		if (!file) {
 			return res.status(404).json({ error: 'Файл не найден' });
@@ -78,13 +88,6 @@ router.get('/delete/:scheduleId', checkAuth, async (req, res) => {
 // /api/schedule
 router.get('/', async (req, res) => {
 	try {
-		const { groupCode } = req.query;
-
-		if (groupCode) {
-			const groupSchedule = await getScheduleRecordByGroupCode(groupCode);
-			return res.json(groupSchedule);
-		}
-
 		const lastScheduleFiles = await getScheduleFiles();
 
 		res.json({ lastScheduleFiles });
@@ -93,12 +96,12 @@ router.get('/', async (req, res) => {
 	}
 });
 
-// /api/schedule/[fileId]
-router.get('/:fileId', async (req, res) => {
+// /api/schedule/:groupCode
+router.get('/:groupCode', async (req, res) => {
 	try {
-		const fileId = req.params.fileId;
+		const { groupCode } = req.params;
 
-		const scheduleFile = await getScheduleRecord(fileId);
+		const scheduleFile = await getScheduleRecordByGroupCode(groupCode);
 
 		res.sendFile(path.join(__dirname, PDF_PATH, scheduleFile.name));
 	} catch (err) {
@@ -106,7 +109,7 @@ router.get('/:fileId', async (req, res) => {
 	}
 });
 
-// /api/schedule/image/[image]
+// /api/schedule/image/:image
 router.get('/image/:image', async (req, res) => {
 	res.sendFile(path.join(__dirname, PNG_PATH, req.params.image));
 });

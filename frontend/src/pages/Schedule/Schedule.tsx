@@ -34,7 +34,7 @@ export const Schedule = (): ReactElement => {
 											key={index}
 											uploadedAt={schedule.createdAt}
 											title={schedule.title || schedule.name}
-											scheduleId={String(schedule.id)}
+											groupCode={String(schedule.groupCode)}
 										/>
 									);
 								})}

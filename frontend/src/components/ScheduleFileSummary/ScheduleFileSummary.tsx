@@ -13,10 +13,10 @@ import { Button } from '../Button/Button';
 export const ScheduleFileSummary = ({
 	title,
 	uploadedAt,
-	scheduleId,
+	groupCode,
 }: FileSummaryProps): ReactElement => {
 	const [showModal, setShowModal] = useState(false);
-	const fileUrl = `/api/schedule/${scheduleId}`;
+	const fileUrl = `/api/schedule/${groupCode}`;
 	const [numPages, setNumPages] = useState<number>();
 
 	title = `${title} (обновлено ${formatDateTime(uploadedAt)})`;

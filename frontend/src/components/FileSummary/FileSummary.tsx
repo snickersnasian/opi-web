@@ -4,7 +4,6 @@ import { FileSummaryProps } from './types';
 import { InfoPanel } from '../InfoPanel/InfoPanel';
 import PdfIcon from '../../assets/icons/PdfIcon.svg';
 import { useNavigate } from 'react-router-dom';
-import { Typo } from 'src/lib/Typo/Typo';
 
 export const FileSummary = ({
 	title,

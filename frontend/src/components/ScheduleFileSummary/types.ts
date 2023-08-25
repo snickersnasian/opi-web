@@ -1,5 +1,5 @@
 export type FileSummaryProps = {
 	title: string;
-	scheduleId: string;
+	groupCode: string;
 	uploadedAt: string;
 };

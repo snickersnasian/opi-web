@@ -5,7 +5,5 @@ export const getScheduleRecordByGroupCode = async (groupCode) => {
 		where: {
 			groupCode: groupCode.toLowerCase(),
 		},
-		order: [['createdAt', 'DESC']],
-		limit: 1,
 	});
 };
