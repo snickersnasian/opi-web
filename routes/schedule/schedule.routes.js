@@ -5,11 +5,11 @@ import { checkPDF } from './helpers/checkPDF.js';
 import multer from 'multer';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { getScheduleFiles } from '../../db/queries/getScheduleFiles.js';
-import { createSchedule } from '../../db/queries/createSchedule.js';
+import { getScheduleFiles } from '../../db/queries/schedule/getScheduleFiles.js';
+import { createSchedule } from '../../db/queries/schedule/createSchedule.js';
 import { PDF_PATH, PNG_PATH } from './constants.js';
 import { checkAuth } from '../../middlewares/auth/checkAuth.js';
-import { getScheduleRecord } from '../../db/queries/getScheduleRecord.js';
+import { getScheduleRecord } from '../../db/queries/schedule/getScheduleRecord.js';
 import fs from 'fs';
 import { promisify } from 'util';
 

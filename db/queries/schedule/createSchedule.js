@@ -1,4 +1,4 @@
-import { ScheduleFile } from '../db.js';
+import { ScheduleFile } from '../../db.js';
 
 export const createSchedule = async (fileName, studyYear, title) => {
 	return await ScheduleFile.create({
